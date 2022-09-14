@@ -82,8 +82,47 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    raise NotImplementedError
 
+    "Checks rows"
+    for row in board:
+        if all(x == row[0] for x in row): # The all() function returns True if all items in an iterable are true, otherwise it returns False
+            if row[0] == X:
+                xwin = True
+                return X
+            elif row[0] == O:
+                owin = True
+                return O
+    
+    "Checks columns"
+    for _ in range(3):
+        x = [row[0] for row in board]
+        if all(spot == x[0] for spot in x):
+            if x[0] == X:
+                xwin = True
+                return X
+            elif x[0] == O:
+                owin = True
+                return O
+
+    "Checks diagonals"
+    diagonal1 = [board[0][0], board[1][1], board[2][2]]
+    diagonal2 = [board[0][2], board[1][1], board[2][0]]
+    if all(x == diagonal1[0] for x in diagonal1):
+        if board[0][0] == X:
+            xwin = True
+            return X
+        elif board[0][0] == O:
+            owin = True
+            return O
+    elif all(x == diagonal2[0] for x in diagonal2):
+        if board[0][2] == X:
+            xwin = True
+            return X
+        elif board[0][2] == O:
+            owin = True
+            return O
+
+    return None # No winner
 
 def terminal(board):
     """
