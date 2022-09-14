@@ -153,7 +153,11 @@ def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    raise NotImplementedError
+    moves = list(actions(board))
+    num_moves = len(moves)
+    a = random.randint(0,num_moves-1)
+    return moves[a]
+
 
 start = initial_state()
 result(start, (0, 1))
