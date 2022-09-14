@@ -37,7 +37,7 @@ def player(board):
         for spot in row:
             if spot == O:
                 board_os += 1
-            else:
+            elif spot == X:
                 board_xs += 1
 
     if board_xs > board_os:
@@ -61,9 +61,9 @@ def actions(board):
             else:
                 icol += 1
                 continue
+        icol = 0
         irow += 1
     return moves
-
 
 def result(board, action):
     """
@@ -98,3 +98,6 @@ def minimax(board):
     Returns the optimal action for the current player on the board.
     """
     raise NotImplementedError
+
+start = initial_state()
+actions(start)
