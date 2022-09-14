@@ -128,7 +128,12 @@ def terminal(board):
     """
     Returns True if game is over, False otherwise.
     """
-    raise NotImplementedError
+    if winner(board) == X or winner(board) == O:
+        return True
+    elif all(spot != EMPTY for row in board for spot in row):
+        return True
+    else:
+        return False
 
 
 def utility(board):
