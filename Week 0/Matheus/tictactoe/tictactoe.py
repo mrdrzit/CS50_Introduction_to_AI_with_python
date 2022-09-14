@@ -3,6 +3,7 @@ Tic Tac Toe Player
 """
 
 import math
+import copy
 
 X = "X"
 O = "O"
@@ -69,8 +70,13 @@ def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
-    raise NotImplementedError
+    if action not in actions(board):
+        raise Exception("Invalid move")
 
+    next = player(board)
+    new_play = copy.deepcopy(board)
+    new_play[action[0]][action[1]] = next
+    return new_play
 
 def winner(board):
     """
@@ -100,4 +106,4 @@ def minimax(board):
     raise NotImplementedError
 
 start = initial_state()
-actions(start)
+result(start, (0, 1))
