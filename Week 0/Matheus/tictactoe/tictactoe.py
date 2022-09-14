@@ -4,6 +4,7 @@ Tic Tac Toe Player
 
 import math
 import copy
+import random
 
 X = "X"
 O = "O"
@@ -14,13 +15,14 @@ def initial_state():
     """
     Returns starting state of the board.
     """
-    # return [[EMPTY, EMPTY, EMPTY],
-    #         [EMPTY, EMPTY, EMPTY],
-    #         [EMPTY, EMPTY, EMPTY]]
+    return [[EMPTY, EMPTY, EMPTY],
+            [EMPTY, EMPTY, EMPTY],
+            [EMPTY, EMPTY, EMPTY]]
 
-    return [[X, EMPTY, EMPTY],
-            [O, O, EMPTY],
-            [X, O, X]]
+    # return [[X, EMPTY, X],
+    #         [X, O, X],
+    #         [O, X, O]]
+
 
 
 def player(board):
@@ -158,6 +160,3 @@ def minimax(board):
     a = random.randint(0,num_moves-1)
     return moves[a]
 
-
-start = initial_state()
-result(start, (0, 1))
