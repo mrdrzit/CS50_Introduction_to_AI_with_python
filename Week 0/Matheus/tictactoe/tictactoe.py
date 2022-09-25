@@ -29,8 +29,8 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-
-    if board != initial_state():
+    start_config = initial_state()
+    if board == start_config:
         return X
     
     board_xs = 0
