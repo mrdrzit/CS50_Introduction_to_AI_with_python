@@ -96,8 +96,11 @@ def winner(board):
                 return O
     
     "Checks columns"
-    for _ in range(3):
-        x = [row[0] for row in board]
+    for column in range(3):
+        x = []
+        for row in range(3):
+            x.append(board[row][column])
+
         if all(spot == x[0] for spot in x):
             if x[0] == X:
                 xwin = True
