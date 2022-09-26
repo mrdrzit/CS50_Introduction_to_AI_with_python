@@ -2,7 +2,6 @@
 Tic Tac Toe Player
 """
 
-import math
 import copy
 import random
 
@@ -66,6 +65,8 @@ def actions(board):
                 continue
         icol = 0
         irow += 1
+    if len(moves) == 0:
+        raise Exception("No moves available")
     return moves
 
 def result(board, action):
@@ -158,8 +159,51 @@ def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    moves = list(actions(board))
-    num_moves = len(moves)
-    a = random.randint(0,num_moves-1)
-    return moves[a]
 
+    # moves = list(actions(board))
+    # num_moves = len(moves)
+    # a = random.randint(0,num_moves-1)
+    # return moves[a]
+
+    if terminal(board):
+        return None
+    else:
+        if player(board) == X:
+            _, move = max(board)
+            return move
+        else:
+            _, move = min(board)
+            return move
+
+
+def max(board):
+    if terminal(board):
+        return utility(board), None
+
+    cost = float('-inf')
+    move = None
+    for action in actions(board):
+        current, _ = min(result(board, action))
+        if current > cost:
+            cost = current
+            move = action
+            if cost == 1:
+                return cost, move
+
+    return cost, move
+
+def min(board):
+    if terminal(board):
+        return utility(board), None
+
+    cost = float('inf')
+    move = None
+    for action in actions(board):
+        current, _ = max(result(board, action))
+        if current < cost:
+            cost = current
+            move = action
+            if cost == -1:
+                return cost, move
+
+    return cost, move
