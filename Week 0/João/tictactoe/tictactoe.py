@@ -119,44 +119,49 @@ def utility(board):
     else:
         return 0
 
-
 def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    minimax_actions = []
-    all_actions = actions(board)
-
-    terminal_state_max = -inf
-    terminal_state_min = inf  
+    if player(board) == X:
+        _, minimax_action = max_value(board)
+    else:
+        _, minimax_action = min_value(board)
     
-    for act in all_actions:
-        board_result = result(board, act)
-        if terminal(board_result):
-            return None
-        else:
-            act_result = utility(board_result)
-            
-            if player(board) == X:
-                if act_result > terminal_state_max:
-                    minimax_actions = []
-                    terminal_state_max = act_result
-                    minimax_actions.append(act)
-                elif act_result == terminal_state_max:
-                    minimax_actions.append(act)
-            else:
-                if act_result <= terminal_state_min:
-                    terminal_state_min = act_result
-                    minimax_actions.append(act)
-                elif act_result == terminal_state_max:
-                    minimax_actions.append(act)
+    return minimax_action
 
-    index = random.randint(0, len(minimax_actions)-1)
-    print(minimax_actions)
-    print("OK")
-    return minimax_actions[index]
+def min_value(board):
+    print(terminal(board))
+    if terminal(board):
+        return utility(board), None
+    v = float('inf')
+    minimax_action = None
+    for action in actions(board):
+        max_v, _ = max_value(result(board, action))
+        if max_v < v:
+            minimax_action = action
+            v = max_v
+            if v == -1:
+                return v, minimax_action
+    
+    return v, minimax_action
 
-            
+
+def max_value(board):
+    print(terminal(board))
+    if terminal(board):
+        return utility(board), None
+    v = float('-inf')
+    minimax_action = None
+    for action in actions(board):
+        min_v, _ = min_value(result(board, action))
+        if min_v > v:
+            minimax_action = action
+            v = min_v
+            if v == 1:
+                return v, minimax_action
+
+    return v, minimax_action    
 
            
 

@@ -13,9 +13,9 @@ white = (255, 255, 255)
 
 screen = pygame.display.set_mode(size)
 
-mediumFont = pygame.font.Font("G:\\Outros computadores\\Desktop\\GitHub\\CS50_Introduction_to_AI_with_python\Week 0\\João\\tictactoe\\OpenSans-Regular.ttf", 28)
-largeFont = pygame.font.Font("G:\\Outros computadores\\Desktop\\GitHub\\CS50_Introduction_to_AI_with_python\\Week 0\\João\\tictactoe\\OpenSans-Regular.ttf", 40)
-moveFont = pygame.font.Font("G:\\Outros computadores\\Desktop\\GitHub\\CS50_Introduction_to_AI_with_python\\Week 0\\João\\tictactoe\\OpenSans-Regular.ttf", 60)
+mediumFont = pygame.font.Font("F:\\GitHub\\CS50_Introduction_to_AI_with_python\Week 0\\João\\tictactoe\\OpenSans-Regular.ttf", 28)
+largeFont = pygame.font.Font("F:\\GitHub\\CS50_Introduction_to_AI_with_python\\Week 0\\João\\tictactoe\\OpenSans-Regular.ttf", 40)
+moveFont = pygame.font.Font("F:\\GitHub\\CS50_Introduction_to_AI_with_python\\Week 0\\João\\tictactoe\\OpenSans-Regular.ttf", 60)
 
 user = None
 board = ttt.initial_state()
